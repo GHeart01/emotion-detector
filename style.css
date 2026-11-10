@@ -1,0 +1,146 @@
+:root {
+  --bg: #f7f6f3;
+  --card: #ffffff;
+  --text: #1d1d1f;
+  --muted: #6b6b70;
+  --border: #e4e2dd;
+  --accent: #e8590c;
+  --accent-soft: #fff1e6;
+  --track: #efede8;
+  --fill: #c9c5bd;
+  --danger: #c92a2a;
+  color-scheme: light dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #141416;
+    --card: #1d1d20;
+    --text: #ececef;
+    --muted: #9a9aa2;
+    --border: #2e2e33;
+    --accent: #ff8a3d;
+    --accent-soft: #3a2414;
+    --track: #2a2a2f;
+    --fill: #55555c;
+    --danger: #ff6b6b;
+  }
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+main { max-width: 720px; margin: 0 auto; padding: 40px 16px 56px; }
+
+header h1 { margin: 0 0 6px; font-size: 1.9rem; letter-spacing: -0.02em; }
+.sub { margin: 0 0 24px; color: var(--muted); }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px;
+  margin-bottom: 16px;
+}
+.label { display: block; font-weight: 600; margin-bottom: 8px; }
+textarea {
+  width: 100%;
+  resize: vertical;
+  font: inherit;
+  color: inherit;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px;
+}
+textarea:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+.examples { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 16px; }
+.example {
+  font: inherit;
+  font-size: 0.85rem;
+  color: var(--muted);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 4px 12px;
+  cursor: pointer;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.example:hover { color: var(--text); border-color: var(--muted); }
+
+.actions { display: flex; align-items: center; gap: 12px; }
+#run {
+  font: inherit;
+  font-weight: 600;
+  color: #fff;
+  background: var(--accent);
+  border: 0;
+  border-radius: 10px;
+  padding: 10px 22px;
+  cursor: pointer;
+}
+#run:disabled { opacity: 0.55; cursor: default; }
+.hint { color: var(--muted); font-size: 0.85rem; }
+
+[hidden] { display: none !important; }
+
+.check { display: flex; gap: 8px; align-items: flex-start; font-size: 0.85rem; color: var(--muted); margin-top: 14px; cursor: pointer; }
+.check input { margin-top: 3px; accent-color: var(--accent); flex: none; }
+
+.stored { margin: 14px 0 0; font-size: 0.85rem; color: var(--muted); }
+.link {
+  font: inherit;
+  color: var(--accent);
+  background: none;
+  border: 0;
+  padding: 0;
+  margin-left: 4px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.status { margin-top: 16px; }
+.status-text { font-size: 0.9rem; color: var(--muted); margin-bottom: 6px; }
+.status.error .status-text { color: var(--danger); }
+.bar { height: 6px; background: var(--track); border-radius: 999px; overflow: hidden; }
+.bar-fill { height: 100%; width: 0; background: var(--accent); transition: width 0.2s ease; }
+
+h2 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin: 0 0 10px; }
+h2:not(:first-child) { margin-top: 22px; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip {
+  background: var(--accent-soft);
+  color: var(--text);
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  padding: 5px 12px;
+  font-weight: 600;
+}
+
+.bars { display: grid; gap: 6px; }
+.row { display: grid; grid-template-columns: 150px 1fr 44px; align-items: center; gap: 10px; font-size: 0.92rem; }
+.row-label { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.track { height: 10px; background: var(--track); border-radius: 999px; overflow: hidden; }
+.fill { display: block; height: 100%; background: var(--fill); border-radius: 999px; }
+.row.hi .fill { background: var(--accent); }
+.row.hi .row-label { font-weight: 600; }
+.row-val { text-align: right; color: var(--muted); font-variant-numeric: tabular-nums; }
+
+details { margin-top: 22px; }
+summary { cursor: pointer; color: var(--muted); font-size: 0.9rem; margin-bottom: 10px; }
+
+footer { color: var(--muted); font-size: 0.85rem; text-align: center; }
+footer a { color: inherit; }
+
+@media (max-width: 480px) {
+  .row { grid-template-columns: 110px 1fr 40px; }
+  header h1 { font-size: 1.6rem; }
+}

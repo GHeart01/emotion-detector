@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Emotion Detector</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Emotion Detector</h1>
+      <p class="sub">
+        Finds the emotions in a piece of text: 28 emotions, 40+ languages.
+        The model runs entirely in your browser, so your text never leaves this page.
+      </p>
+    </header>
+
+    <section class="card">
+      <label for="text" class="label">Text</label>
+      <textarea id="text" rows="4" placeholder="Type or paste a sentence in any language…"></textarea>
+
+      <div class="examples" id="examples" aria-label="Examples"></div>
+
+      <div class="actions" id="actions">
+        <button id="run" type="button" disabled>Loading model…</button>
+        <span class="hint">Ctrl/⌘ + Enter</span>
+      </div>
+
+      <div id="status" class="status" role="status">
+        <div class="status-text" id="status-text">Starting…</div>
+        <div class="bar"><div class="bar-fill" id="progress"></div></div>
+      </div>
+
+      <label class="check keep" id="keep-wrap" hidden>
+        <input type="checkbox" id="keep" />
+        <span>
+          Keep the model (about 270 MB) on this device so it loads instantly next time.
+          Otherwise it's only held in memory and is gone when you close the tab.
+        </span>
+      </label>
+
+      <p id="stored" class="stored" hidden>
+        <span id="stored-text">Model saved on this device.</span>
+        <button type="button" class="link" id="remove">Remove it</button>
+      </p>
+    </section>
+
+    <section class="card" id="results" hidden>
+      <h2>Detected</h2>
+      <div id="detected" class="chips"></div>
+
+      <h2>Basic emotions</h2>
+      <div id="ekman" class="bars"></div>
+
+      <details>
+        <summary>All 28 scores</summary>
+        <div id="all" class="bars"></div>
+      </details>
+    </section>
+
+    <footer>
+      Model: <a href="https://huggingface.co/Horizon-Labs/multilingual-emotions-small" target="_blank" rel="noopener">Horizon-Labs/multilingual-emotions-small</a>
+      (Apache-2.0) · Runs with <a href="https://huggingface.co/docs/transformers.js" target="_blank" rel="noopener">Transformers.js</a>
+    </footer>
+  </main>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
